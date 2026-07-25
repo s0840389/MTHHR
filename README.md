@@ -157,23 +157,6 @@ Table 5 gives the estimated parameters.
 <https://s0840389.github.io/jamielenneyecon/>. That is the place to look for the
 details.**
 
-The implementation point worth flagging here: following Bardóczy and Guerreiro
-(2025), the generalised Jacobian can be written as
-`Jhat = J·Λ₀ + Σ_h R_h(Λ_h − Λ_{h−1})`, which taken literally means forming and
-multiplying `T` matrices of size `T × T` — expensive at `T = 400`. The code
-instead works with the **fake news matrix** `F`, the object `sequence_jacobian`
-builds on the way to `J` and then discards. Because `F[t, s]` isolates the *new
-information* arriving at each date, the news and extrapolation channels act on
-it separately and additively, and the whole calculation collapses to a single
-pass over `F`.
-
-Getting hold of `F` needs no changes to `sequence_jacobian` at all. The
-Jacobian is built by accumulating the fake news matrix along its diagonals,
-`J[t, s] = J[t-1, s-1] + F[t, s]`, so `F` is recovered by differencing:
-`JtoF` inverts the recursion exactly (to machine precision), and `JtoFdict`
-applies it to a whole `JacobianDict`. The model is therefore solved with the
-standard, unmodified `sequence_jacobian` API — `hh.jacobian(...)` — and `F` is
-derived afterwards.
 
 ---
 
