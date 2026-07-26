@@ -100,7 +100,7 @@ def monetary(i, rstar, phi, pi_cpi, rhom, epsr, Y, Yss, phiy):
     rents, not to goods inflation alone.
     """
     ygap = (Y - Yss) / Yss
-    i_res = (rstar + pi_cpi * phi + phiy * ygap) * (1 - rhom) + (1 + i(-1)) * rhom + epsr - i
+    i_res = (rstar + pi_cpi * phi + phiy * ygap) * (1 - rhom) +  i(-1) * rhom + epsr - i
 
     return i_res, ygap
 
