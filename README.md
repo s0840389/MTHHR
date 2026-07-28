@@ -154,7 +154,7 @@ the baseline). Section 3.3 and appendix C.2 of the paper give the derivation;
 Table 5 gives the estimated parameters.
 
 **A separate write-up of this method, with worked examples, is at
-<https://s0840389.github.io/jamielenneyecon/>. That is the place to look for the
+<https://github.com/s0840389/Flexibile_Deviations_SSJ>. That is the place to look for the
 details.**
 
 
